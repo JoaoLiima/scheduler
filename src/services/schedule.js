@@ -16,10 +16,9 @@ const jobsByDay = (jobs) => {
 
   while (timeLimit > 0 && index < jobs.length) {
     const job = jobs[index];
-    let jobLength = job['Tempo estimado'].split(' ')[0];
-    if (timeLimit - jobLength >= 0) {
-      timeLimit -= jobLength;
-      list.push(job.ID);
+    if (timeLimit - job.duration >= 0) {
+      timeLimit -= job.duration;
+      list.push(job.id);
       jobs.splice(index, 1);
     }
     else {

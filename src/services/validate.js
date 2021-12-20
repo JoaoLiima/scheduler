@@ -28,4 +28,26 @@ validateData.verifyRange = (orderedJobs, limitDates) => {
   return jobsNotDone;
 }
 
+validateData.isDate = job => {
+  const date = new Date(job['Data Máxima de conclusão']);
+  
+  if (date instanceof Date && !isNaN(date)) {
+    return date;
+  }
+
+  console.log(`Campo de data limite no formato incorreto, o trabalho de ID = ${job.ID} não será adicionado a agenda`);
+  return null;
+}
+
+validateData.getNumber = job => {
+  const hours = +job['Tempo estimado'].split(' ')[0];
+
+  if (!isNaN(hours)) {
+    return hours;
+  }
+
+  console.log(`Campo de horas no formato incorreto, o trabalho de ID = ${job.ID} não será adicionado a agenda`);
+  return null;
+}
+
 module.exports = validateData;
