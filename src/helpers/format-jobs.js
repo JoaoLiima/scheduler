@@ -1,6 +1,5 @@
 const jobs = require('../mocks/jobs.json');
-const { begin, end } = require('../mocks/limitDates.json');
-const validateData = require('./validate');
+const validateData = require('../services/validate');
 
 const formatedJobs = [];
 
@@ -8,7 +7,7 @@ jobs.forEach(job => {
   const formatedJob = {
     id: job.ID,
     description: job['Descrição'],
-    limitDate: validateData.isDate(job),
+    limitDate: validateData.getDate(job),
     duration: validateData.getNumber(job)
   };
 
