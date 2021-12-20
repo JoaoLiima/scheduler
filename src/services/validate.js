@@ -1,5 +1,3 @@
-const { begin } = require('../mocks/limitDates.json');
-
 const validateData = {};
 const jobsNotDone = [];
 
@@ -29,7 +27,7 @@ validateData.getDate = job => {
 validateData.getNumber = job => {
   const hours = +job['Tempo estimado'].split(' ')[0];
 
-  if (!isNaN(hours)) {
+  if (!isNaN(hours) && hours <= 8 && hours >= 0) {
     return hours;
   }
 
@@ -45,8 +43,22 @@ validateData.isDate = date => {
     return formatedDate;
   }
 
-  console.log('Janela de execução inválida, as coisas podem ficar estranhas a partir de agora');
+  console.log('Data inválida');
   return null;
+}
+
+validateData.verifyJobsThatCanBeDone = (jobs, begin, end) => {
+  const rangeOfDays = end.getDate() - begin.getDate() + 1;
+
+  while (jobs.length > rangeOfDays) {
+    const lostJobs = jobs.pop();
+    jobsNotDone.push(...lostJobs);
+  }
+
+  console.log('Trabalhos realizados: ', jobs);
+  console.log('Trabalhos não realizados: ', jobsNotDone.sort());
+  
+  return jobsNotDone;
 }
 
 module.exports = validateData;

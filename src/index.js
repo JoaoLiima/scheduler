@@ -7,6 +7,7 @@ const orderedJobs = jobs.sort((jobA, jobB) => {
   return jobA.limitDate < jobB.limitDate ? -1 : 1;
 })
 
-validate.verifyRange(orderedJobs, begin);
+validate.verifyRange(orderedJobs, begin, end);
+const scheduledJobs = schedule.organize(orderedJobs);
 
-console.log(schedule.organize(orderedJobs));
+validate.verifyJobsThatCanBeDone(scheduledJobs, begin, end);
