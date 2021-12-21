@@ -6,24 +6,17 @@ const schedule = {};
 schedule.organize = jobs => {
   let index = 0;
   const hoursByDay = getHoursByDay(begin, end);
-  const availableDays = end.getDate() - begin.getDate() + 1;
 
   const jobsNotDone = validate.verifyRange(jobs, begin, end);
   let orderedSchedule = []
 
   while (jobs.length > 0 && hoursByDay[index]) {
     let subList = jobsByDay(jobs, hoursByDay[index]);
-
-    if (orderedSchedule > availableDays) {
-      jobsNotDone.push(...subList);
-      index++;
-    } else {
-      orderedSchedule.push(subList);
-      index++;
-    }
+    orderedSchedule.push(subList);
+    index++;
   }
 
-  jobsNotDone.push(...jobs);
+  jobsNotDone.push(...jobs.map(job => job.id));
 
   return { orderedSchedule, jobsNotDone };
 }

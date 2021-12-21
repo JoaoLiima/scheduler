@@ -7,7 +7,7 @@ validateData.verifyRange = (orderedJobs, begin) => {
   while (firstJob?.limitDate < begin) {
     console.log(`O trabalho de ID = ${firstJob.id} não será adicionado pois a data limite está fora da janela de execução`);
 
-    jobsNotDone.push(firstJob);
+    jobsNotDone.push(firstJob.id);
     orderedJobs.shift();
     firstJob = orderedJobs[0];
     lastJob = orderedJobs[orderedJobs.length - 1];
@@ -22,7 +22,7 @@ validateData.getDate = job => {
   if (date) return date;
 
   console.log(`Campo de data limite no formato incorreto, o trabalho de ID = ${job.ID} não será adicionado a agenda`);
-  jobsNotDone.push(job);
+  jobsNotDone.push(job.ID);
   return null;
 }
 
@@ -34,7 +34,7 @@ validateData.getNumber = job => {
   }
 
   console.log(`Campo de horas no formato incorreto, o trabalho de ID = ${job.ID} não será adicionado a agenda`);
-  jobsNotDone.push(job);
+  jobsNotDone.push(job.ID);
   return null;
 }
 
@@ -47,20 +47,6 @@ validateData.isDate = date => {
 
   console.log('Data inválida');
   return null;
-}
-
-validateData.verifyJobsThatCanBeDone = (jobs, begin, end) => {
-  const rangeOfDays = end.getDate() - begin.getDate() + 1;
-
-  while (jobs.length > rangeOfDays) {
-    const lostJobs = jobs.pop();
-    jobsNotDone.push(...lostJobs);
-  }
-
-  console.log('Trabalhos realizados: ', jobs);
-  console.log('Trabalhos não realizados: ', jobsNotDone.sort());
-  
-  return jobsNotDone;
 }
 
 module.exports = validateData;
