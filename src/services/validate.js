@@ -12,6 +12,8 @@ validateData.verifyRange = (orderedJobs, begin) => {
     firstJob = orderedJobs[0];
     lastJob = orderedJobs[orderedJobs.length - 1];
   }
+
+  return jobsNotDone;
 }
 
 validateData.getDate = job => {
