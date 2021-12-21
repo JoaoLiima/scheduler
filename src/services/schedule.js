@@ -1,5 +1,8 @@
 const validate = require('../services/validate');
-const [ begin, end ] = require('../helpers/format-dates');
+const formatDates = require('../helpers/format-dates');
+const limitDate = require('../mocks/limit-dates.json');
+
+const [ begin, end ] = formatDates(limitDate);
 
 const schedule = {};
 

@@ -1,5 +1,8 @@
-const jobs = require('./helpers/format-jobs');
-const schedule = require('./services/schedule')
+const formatJobs = require('./helpers/format-jobs');
+const allJobs = require('./mocks/jobs.json');
+const schedule = require('./services/schedule');
+
+const jobs = formatJobs(allJobs);
 
 const orderedJobs = jobs.sort((jobA, jobB) => {
   return jobA.limitDate < jobB.limitDate ? -1 : 1;

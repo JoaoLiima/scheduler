@@ -1,9 +1,12 @@
-const { begin, end } = require('../mocks/limitDates.json');
 const validateData = require('../services/validate');
 
-const formatedBegin = validateData.isDate(begin);
-const formatedEnd = validateData.isDate(end);
+const formatDates = (date) => {
+  const formatedBegin = validateData.isDate(date.begin);
+  const formatedEnd = validateData.isDate(date.end);
 
-const dates = [ formatedBegin, formatedEnd ]
+  const dates = [ formatedBegin, formatedEnd ]
 
-module.exports = dates;
+  return dates;
+}
+
+module.exports = formatDates;
