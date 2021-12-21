@@ -1,12 +1,8 @@
 const validate = require('../services/validate');
-const formatDates = require('../helpers/format-dates');
-const limitDate = require('../mocks/limit-dates.json');
-
-const [ begin, end ] = formatDates(limitDate);
 
 const schedule = {};
 
-schedule.organize = jobs => {
+schedule.organize = (jobs, begin, end) => {
   let index = 0;
   const hoursByDay = getHoursByDay(begin, end);
 
