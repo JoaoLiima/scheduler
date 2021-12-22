@@ -13,7 +13,7 @@ Olá, tudo bem? Este programa se trata de um teste de desenvolvimento, foi desen
 - Caso deseje utilizar dados diferentes, basta alterar os arquivos `jobs.json` e `limit-dates.json`.
 
 # Bugs conhecidos
-- Existe um bug quando se passa datas do range em meses diferentes, pretendo subir uma correção em breve.
+- (Corrigido) Existe um bug quando se passa datas do range em meses diferentes, pretendo subir uma correção em breve.
 
 # Melhorias futuras
 - Interface gráfica;

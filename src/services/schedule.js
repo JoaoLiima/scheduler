@@ -40,7 +40,10 @@ const jobsByDay = (jobs, timeLimit) => {
 
 const getHoursByDay = (begin, end) => {
   const hours = [];
-  const days = end.getDate() - begin.getDate() + 1;
+  const diffTime = Math.abs(end.getTime() - begin.getTime());
+  const days = Math.ceil(diffTime / (1000 * 3600 * 24));
+
+  console.log(days);
   
   for(let i = 0; i < days; i++) {
     if (i === 0) {
