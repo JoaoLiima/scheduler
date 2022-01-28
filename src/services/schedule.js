@@ -42,8 +42,6 @@ const getHoursByDay = (begin, end) => {
   const hours = [];
   const diffTime = Math.abs(end.getTime() - begin.getTime());
   const days = Math.ceil(diffTime / (1000 * 3600 * 24));
-
-  console.log(days);
   
   for(let i = 0; i < days; i++) {
     if (i === 0) {
