@@ -40,10 +40,10 @@ describe('Scheduling jobs test', () => {
   const { orderedSchedule, jobsNotDone } = schedule.organize(mockJobs, begin, end);
 
   test('Scheduling jobs according to range of dates', () => {
-    expect(orderedSchedule).toEqual([[1, 3], [2], [4]])
+    expect(orderedSchedule).toEqual([[1, 3], [2]]);
   })
 
   test('Get jobs not done', () => {
-    expect(jobsNotDone).toEqual([ 5 ])
+    expect(jobsNotDone).toEqual([ 4, 5 ]);
   })
 })
